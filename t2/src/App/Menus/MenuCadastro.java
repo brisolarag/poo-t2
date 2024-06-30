@@ -4,15 +4,24 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import models.Categoria;
+import models.midia.Midiateca;
 import models.midia.Musica;
 import models.midia.Video;
 
 public class MenuCadastro extends Menu {
+    private Midiateca midiateca;
+
+    public MenuCadastro(Midiateca midiateca) {
+        this.midiateca = midiateca;
+    }
+
+
     public void cadastrarMusica() {
         try {
             while (true) {
 
                 showLogo();
+                @SuppressWarnings("resource")
                 Scanner tecladoCadastro = new Scanner(System.in);
                 System.out.println();
                 System.out.println("Cadastrando Musica...");
@@ -50,6 +59,7 @@ public class MenuCadastro extends Menu {
         
                 Musica musicaGerada = new Musica(titulo, ano, cat, duracao);
                 System.out.println(musicaGerada.toString());
+                midiateca.cadastraMidia(musicaGerada);
     
                 System.out.println("Digite qualquer tecla para sair...");
                 System.in.read();
@@ -66,6 +76,7 @@ public class MenuCadastro extends Menu {
             while (true) {
 
                 showLogo();
+                @SuppressWarnings("resource")
                 Scanner tecladoCadastro = new Scanner(System.in);
                 System.out.println();
                 System.out.println("Cadastrando Video...");
@@ -103,6 +114,7 @@ public class MenuCadastro extends Menu {
         
                 Video videoGerado = new Video(titulo, ano, cat, qualidade);
                 System.out.println(videoGerado.toString());
+                midiateca.cadastraMidia(videoGerado);
     
                 System.out.println("Digite qualquer tecla para sair...");
                 System.in.read();

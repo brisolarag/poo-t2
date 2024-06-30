@@ -3,7 +3,7 @@ package models.midia;
 import models.Categoria;
 
 public abstract class Midia {
-    private int _codigo = 0;  
+    private static int _codigo = 0;  
 
 
     private int codigo;
@@ -46,7 +46,7 @@ public abstract class Midia {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(this.codigo);
-        builder.append(". [").append(this.getTitulo()).append("] ").append(this.getAno()).append(" - ").append(this.getCategoria());
+        builder.append(this.getCodigo()).append(", ").append(this.getTitulo()).append(", ").append(this.getAno()).append(", ").append(this.getCategoria());
         return builder.toString();
     }
 }

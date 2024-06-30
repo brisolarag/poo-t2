@@ -27,7 +27,7 @@ public class Video extends Midia {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
-        builder.append(" - ").append(this.getQualidade());
+        builder.append(", ").append(this.getQualidade());
         return builder.toString();
     }
 }

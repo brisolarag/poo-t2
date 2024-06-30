@@ -28,6 +28,7 @@ public class Menu {
         System.out.println("[5] Mostrar os dados da musica de maior duracao");
         System.out.println("[6] Remover midia");
         System.out.println("[7] Mostrar o somatorio de locacoes de todas as midias");
+        System.out.println("[8] Mostra todas midias");
         System.out.println();
         System.out.println("[0] Sair do programa");
     }
