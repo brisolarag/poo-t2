@@ -19,6 +19,11 @@ public class Musica extends Midia {
         return (int) duracao / 60;
     }
 
+    private int pegaSegundos (double duracao) {
+        int minutos = (int) duracao / 60;
+        return (int) duracao - (minutos * 60);
+    }
+
 
     public double calculaLocacao() {
         switch (this.getCategoria()) {
@@ -38,7 +43,7 @@ public class Musica extends Midia {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
-        builder.append(" - ").append(this.getDuracao());
+        builder.append(" - ").append(transformaEmMinutos(this.getDuracao())).append(":").append(pegaSegundos(this.getDuracao()));
         return builder.toString();
     }
 

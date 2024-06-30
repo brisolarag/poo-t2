@@ -22,7 +22,10 @@ public class ACMEMidia {
             System.out.println();
             System.out.print("escolha: ");
             int escolha = tecladoPrincipal.nextInt();
-            if (escolha == 0) break;
+            if (escolha == 0) {
+                System.out.println("saindo...");
+                break;
+            }
             trataEscolha(escolha);
 
         }
@@ -32,8 +35,13 @@ public class ACMEMidia {
     private void trataEscolha(int e) {
         switch (e) {
             case 1:
-                MenuCadastro mc = new MenuCadastro();
-                mc.cadastrarMusica();
+                MenuCadastro mcv = new MenuCadastro();
+                mcv.cadastrarVideo();
+                break;
+            
+            case 2:
+                MenuCadastro mcm = new MenuCadastro();
+                mcm.cadastrarMusica();
                 break;
         
             default:
