@@ -43,7 +43,7 @@ public class Musica extends Midia {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
-        builder.append(", ").append(transformaEmMinutos(this.getDuracao())).append(":").append(pegaSegundos(this.getDuracao()));
+        builder.append(", ").append(transformaEmMinutos(this.getDuracao())).append(":").append(pegaSegundos(this.getDuracao())).append(", R$").append(this.calculaLocacao());
         return builder.toString();
     }
 

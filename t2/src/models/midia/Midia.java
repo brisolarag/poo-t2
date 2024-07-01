@@ -1,9 +1,16 @@
 package models.midia;
 
+import java.util.Date;
+
 import models.Categoria;
 
 public abstract class Midia {
     private static int _codigo = 0;  
+    private Date dateAdded;
+    public Date getDate() {
+        return dateAdded;
+    }
+
 
 
     private int codigo;
@@ -36,6 +43,7 @@ public abstract class Midia {
         this.titulo = titulo;
         this.ano = ano;
         this.categoria = categoria;
+        this.dateAdded = new Date();
     }
 
     
