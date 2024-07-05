@@ -1,0 +1,13 @@
+video,Como ganhar dinheiro no Youtube,2020,Ficcao,240
+video,Como ficar rico rapido,2021,Ficcao,210
+video,Como desencalhar,2021,Ficcao,220
+video,Saindo da lama ao luxo,2022,Drama,340
+video,Ganhando uma namorada,2023,Romance,420
+musica,Baby,2010,Romance,200
+musica,Snare,2015,Ficcao,160
+musica,Party in the USA,2019,Ficcao,200
+musica,Como virar PO rapidamente,2024,Ficcao,1080
+musica,Como ganhar 1milhao facil,2025,Ficcao,480
+musica,To sem sinal da TIM,2010,Acao,200,00
+musica,Video Baixa Qualidade,2010,Acao,270
+musica,Musica teste gravacao,2029,Drama,200,00

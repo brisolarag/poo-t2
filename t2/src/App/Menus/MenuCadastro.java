@@ -3,16 +3,17 @@ package App.Menus;
 import java.io.IOException;
 import java.util.Scanner;
 
+import data.DataUpdater;
 import models.Categoria;
 import models.midia.Midiateca;
 import models.midia.Musica;
 import models.midia.Video;
 
 public class MenuCadastro extends Menu {
-    private Midiateca midiateca;
+    private DataUpdater du;
 
-    public MenuCadastro(Midiateca midiateca) {
-        this.midiateca = midiateca;
+    public MenuCadastro(DataUpdater du) {
+        this.du = du;
     }
 
 
@@ -59,7 +60,8 @@ public class MenuCadastro extends Menu {
         
                 Musica musicaGerada = new Musica(titulo, ano, cat, duracao);
                 System.out.println(musicaGerada.toString());
-                midiateca.cadastraMidia(musicaGerada);
+                du.gravaOut("[Criar musica]: " + musicaGerada.toString());
+                du.cadastraMusica(musicaGerada);
     
                 System.out.println("Digite qualquer tecla para sair...");
                 System.in.read();
@@ -114,7 +116,8 @@ public class MenuCadastro extends Menu {
         
                 Video videoGerado = new Video(titulo, ano, cat, qualidade);
                 System.out.println(videoGerado.toString());
-                midiateca.cadastraMidia(videoGerado);
+                du.gravaOut("[Criar video]: " + videoGerado.toString());
+                du.cadastraVideo(videoGerado);
     
                 System.out.println("Digite qualquer tecla para sair...");
                 System.in.read();

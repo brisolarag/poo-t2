@@ -1,0 +1,11 @@
+
+05/07 | 10:15:12 ==> [Mostrar midias]: 0 1 2 3 4 5 6 7 8 9 10 
+05/07 | 10:15:33 ==> [Mais recente adicionado]: 11: 5, Baby, 2010, ROM, 3:20, R$0.8999999999999999
+05/07 | 10:15:47 ==> [Mais proximo media locacoes]: 10: 9, Como ganhar 1milhao facil, 2025, FIC, 8:0, R$4.0
+05/07 | 10:16:00 ==> [Busca midia maior duracao]: 8, Como virar PO rapidamente, 2024, FIC, 18:0, R$9.0
+05/07 | 10:16:09 ==> [Busca midia qualidade(480)]: 
+05/07 | 10:16:37 ==> [Criar video]: 11, Video Baixa Qualidade, 2010, ACA, 270, R$15.0
+05/07 | 10:16:50 ==> [Busca midia qualidade(270)]: 11 
+05/07 | 10:16:59 ==> [Busca midia categoria(Acao)]: [Busca midia categoria(Drama)]: [Busca midia categoria(Ficcao)]: [Busca midia categoria(Romance)]: 10 11 
+05/07 | 10:17:22 ==> [Busca midia codigo(11)]: 11, Video Baixa Qualidade, 2010, ACA, 270, R$15.0
+05/07 | 10:17:39 ==> [Criar musica]: 12, Musica teste gravacao, 2029, DRA, 3:20, R$2.0999999999999996

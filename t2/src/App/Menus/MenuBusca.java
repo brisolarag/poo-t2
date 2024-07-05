@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import data.DataUpdater;
 import models.Categoria;
 import models.midia.Midia;
 import models.midia.Midiateca;
@@ -16,8 +17,10 @@ public class MenuBusca extends Menu {
 //  inexistente. 
 
     private Midiateca midiateca;
-    public MenuBusca(Midiateca m ) {
+    private DataUpdater du;
+    public MenuBusca(Midiateca m, DataUpdater du) {
         this.midiateca = m;
+        this.du = du;
     }
 
     public void mostraMidias() {
@@ -29,11 +32,16 @@ public class MenuBusca extends Menu {
                 System.out.println("Mostra todas midias...");
 
                 System.out.println();
+                StringBuilder b = new StringBuilder();
+                b.append("[Mostrar midias]: ");
 
                 ArrayList<Midia> todasMidias = this.midiateca.getMidias();
                 for (Midia midia : todasMidias) {
                     System.out.println(midia.toString());
+                    b.append(midia.getCodigo());
+                    b.append(" ");
                 }
+                du.gravaOut(b.toString());
 
                 System.out.println();
     
@@ -56,16 +64,23 @@ public class MenuBusca extends Menu {
                 Scanner tecladoCadastro = new Scanner(System.in);
                 System.out.println();
                 System.out.println("Busca por codigo...");
-
+                StringBuilder b = new StringBuilder();
+                
                 System.out.println();
-        
+                
                 System.out.print("- Digite o codigo: ");
                 int codigo = Integer.parseInt(tecladoCadastro.nextLine());
+
+                b.append("[Busca midia codigo(" + codigo + ")]: ");
+
+
                 Midia buscada = this.midiateca.consultaMidiaCodigo(codigo);
                 if (buscada == null) {
                     System.out.println("3. Codigo inexistente");
                 } else {
                     System.out.println(buscada.toString());
+                    b.append(buscada.toString());
+                    du.gravaOut(b.toString());
                 }
         
     
@@ -88,6 +103,7 @@ public class MenuBusca extends Menu {
                 Scanner tecladoCadastro = new Scanner(System.in);
                 System.out.println();
                 System.out.println("Busca por categoria...");
+                StringBuilder b = new StringBuilder();
 
                 System.out.println();
         
@@ -96,20 +112,34 @@ public class MenuBusca extends Menu {
                 System.out.print("Selecione uma opcao: ");
                 int opcao = Integer.parseInt(tecladoCadastro.nextLine());
                 Categoria categoria = Categoria.ACA;
-                if (opcao == 1)
+                if (opcao == 1) {
                     categoria = Categoria.ACA;
-                if (opcao == 2)
+                    b.append("[Busca midia categoria(Acao)]: ");
+                } 
+                if (opcao == 2) {
                     categoria = Categoria.DRA;
-                if (opcao == 3)
+                    b.append("[Busca midia categoria(Drama)]: ");
+                }
+                if (opcao == 3) {
                     categoria = Categoria.FIC;
-                if (opcao == 4)
+                    b.append("[Busca midia categoria(Ficcao)]: ");
+                }
+                if (opcao == 4) {
                     categoria = Categoria.ROM;
+                    b.append("[Busca midia categoria(Romance)]: ");
+                }
+
+
                 ArrayList<Midia> destaCategoria = midiateca.consultaMidiaCategoria(categoria);
                 System.out.println();
                 System.out.println("Resultado:");
                 for (Midia midia : destaCategoria) {
                     System.out.println("- " + midia.toString());
+                    b.append(midia.getCodigo());
+                    b.append(" ");
                 }
+
+                du.gravaOut(b.toString());
                 System.out.println();
 
     
@@ -133,15 +163,21 @@ public class MenuBusca extends Menu {
                 Scanner tecladoCadastro = new Scanner(System.in);
                 System.out.println();
                 System.out.println("Busca por video por qualidade...");
+                StringBuilder b = new StringBuilder();
 
                 System.out.println();
 
                 System.out.print("Digite uma qualidade (ex.: 1080): ");
                 int qualidade = Integer.parseInt(tecladoCadastro.nextLine());
+                b.append("[Busca midia qualidade("+ qualidade +")]: ");
+
                 ArrayList<Video> videos = midiateca.consultaMidiaQualidade(qualidade);
                 for (Video video : videos) {
                     System.out.println("- " + video.toString());
+                    b.append(video.getCodigo());
+                    b.append(" ");
                 }
+                du.gravaOut(b.toString());
 
     
                 System.out.println("Digite qualquer tecla para sair...");
@@ -161,6 +197,8 @@ public class MenuBusca extends Menu {
                 showLogo();
                 System.out.println();
                 System.out.println("Busca por musica maior duracao...");
+                StringBuilder b = new StringBuilder();
+                b.append("[Busca midia maior duracao]: ");
 
                 System.out.println();
 
@@ -168,9 +206,12 @@ public class MenuBusca extends Menu {
                 Musica maiorD = midiateca.consultaMusicaMaiorDuracao();
                 if (maiorD == null) {
                     System.out.println("6: Nenhuma musica encontrada.");
+                    b.append("6: Nenhuma musica encontrada.");
                 } else {
                     System.out.println(maiorD.toString());
+                    b.append(maiorD.toString());
                 }
+                du.gravaOut(b.toString());
 
                 System.out.println();
                 System.out.println("Digite qualquer tecla para sair...");
@@ -190,6 +231,8 @@ public class MenuBusca extends Menu {
                 showLogo();
                 System.out.println();
                 System.out.println("Somatorio de locacoes...");
+                StringBuilder b = new StringBuilder();
+                b.append("[Somatorio de locacoes]: ");
 
                 System.out.println();
 
@@ -198,9 +241,12 @@ public class MenuBusca extends Menu {
                 try {
                     double somatorio = this.midiateca.todasLocacoes();
                     System.out.println("8: R$" + somatorio);
+                    b.append("8: R$" + somatorio);
                 } catch (NullPointerException e) {
                     System.out.println("8: Nenhuma midia encontrada.");
+                    b.append("8: Nenhuma midia encontrada.");
                 }
+                du.gravaOut(b.toString());
 
                 System.out.println();
                 System.out.println("Digite qualquer tecla para sair...");
@@ -220,6 +266,8 @@ public class MenuBusca extends Menu {
                 showLogo();
                 System.out.println();
                 System.out.println("Mais proximo da media de locacoes...");
+                StringBuilder b = new StringBuilder();
+                b.append("[Mais proximo media locacoes]: ");
 
                 System.out.println();
 
@@ -228,9 +276,12 @@ public class MenuBusca extends Menu {
                 try {
                     Midia maisProximo = this.midiateca.maisProximoMedia();
                     System.out.println("10: " + maisProximo);
+                    b.append("10: " + maisProximo);
                 } catch (NullPointerException e) {
                     System.out.println("10: Nenhuma midia encontrada.");
+                    b.append("10: Nenhuma midia encontrada.");
                 }
+                du.gravaOut(b.toString());
 
                 System.out.println();
                 System.out.println("Digite qualquer tecla para sair...");
@@ -249,16 +300,23 @@ public class MenuBusca extends Menu {
                 showLogo();
                 System.out.println();
                 System.out.println("Mais recente adicionado...");
+                StringBuilder b = new StringBuilder();
+                b.append("[Mais recente adicionado]: ");
 
                 System.out.println();
 
                 System.out.println("Resultado:");
 
                 Midia maisRecente = this.midiateca.maisRecente();
-                if (maisRecente == null)
+                if (maisRecente == null) {
                     System.out.println("11: Nenhuma midia encontrada.");
-                else
+                    b.append("11: Nenhuma midia encontrada.");
+                }
+                else {
                     System.out.println("11: " + maisRecente);
+                    b.append("11: " + maisRecente);
+                }
+                du.gravaOut(b.toString());
 
 
                 System.out.println();

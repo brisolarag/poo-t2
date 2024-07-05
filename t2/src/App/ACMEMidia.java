@@ -7,15 +7,19 @@ import App.Menus.Menu404;
 import App.Menus.MenuBusca;
 import App.Menus.MenuCadastro;
 import App.Menus.MenuRemover;
+import data.DataUpdater;
 import models.midia.Midiateca;
 
 public class ACMEMidia {
     private Midiateca m;
+    private DataUpdater du;
     public ACMEMidia() {
         this.m = new Midiateca();
+        this.du = new DataUpdater("t2/src/data/in.txt", "t2/src/data/out.txt", this.m);
     }
 
     public void executar() {
+        this.du.cadastraIn();
         this.menuPrincipal();
     }
     
@@ -43,28 +47,28 @@ public class ACMEMidia {
     private void trataEscolha(int e) {
         switch (e) {
             case 1:
-                MenuCadastro video = new MenuCadastro(this.m);
+                MenuCadastro video = new MenuCadastro(this.du);
                 video.cadastrarVideo();
                 break;
             
             case 2:
-                MenuCadastro musica = new MenuCadastro(this.m);
+                MenuCadastro musica = new MenuCadastro(this.du);
                 musica.cadastrarMusica();
                 break;
             case 3:
-                MenuBusca codigo = new MenuBusca(this.m);
+                MenuBusca codigo = new MenuBusca(this.m, this.du);
                 codigo.buscaMidiaCodigo();
                 break;
             case 4:
-                MenuBusca categoria = new MenuBusca(this.m);
+                MenuBusca categoria = new MenuBusca(this.m, this.du);
                 categoria.buscaMidiaCategoria();
                 break;
             case 5:
-                MenuBusca qualidade = new MenuBusca(this.m);
+                MenuBusca qualidade = new MenuBusca(this.m, this.du);
                 qualidade.buscaVideoQualidade();
                 break;
             case 6:
-                MenuBusca maiorDuracao = new MenuBusca(this.m);
+                MenuBusca maiorDuracao = new MenuBusca(this.m, this.du);
                 maiorDuracao.buscaMaiorDuracao();
                 break;
             case 7:
@@ -72,21 +76,21 @@ public class ACMEMidia {
                 remover.removerPorCodigo();
                 break;
             case 8:
-                MenuBusca somatorio = new MenuBusca(this.m);
+                MenuBusca somatorio = new MenuBusca(this.m, this.du);
                 somatorio.somatorio();
                 break;
     
             case 9:
-                MenuBusca todas = new MenuBusca(this.m);
+                MenuBusca todas = new MenuBusca(this.m, this.du);
                 todas.mostraMidias();
                 break;
 
             case 10:
-                MenuBusca maisProximoMedia = new MenuBusca(this.m);
+                MenuBusca maisProximoMedia = new MenuBusca(this.m, this.du);
                 maisProximoMedia.maisProximoMedia();
                 break;
             case 11:
-                MenuBusca maisRecente = new MenuBusca(this.m);
+                MenuBusca maisRecente = new MenuBusca(this.m, this.du);
                 maisRecente.maisRecente();
                 break;
 

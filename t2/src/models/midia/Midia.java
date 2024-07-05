@@ -37,6 +37,19 @@ public abstract class Midia {
     public Categoria getCategoria() {
         return categoria;
     }
+    public String getCategoriaString() {
+        switch (this.categoria) {
+            case Categoria.ACA:
+                return "Acao"; 
+            case Categoria.DRA:
+                return "Drama";
+            case Categoria.FIC:
+                return "Ficcao";
+            case Categoria.ROM:
+                return "Romance";
+        }
+        return "Nada";
+    }
 
     public Midia(String titulo, int ano, Categoria categoria) {
         this.setCodigo();
